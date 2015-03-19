@@ -9,6 +9,21 @@
 #import "ToDo.h"
 
 @implementation ToDo
+
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if (self) {
+        _title = [aDecoder decodeObjectForKey:@"title"];
+        _content = [aDecoder decodeObjectForKey:@"content"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:_title forKey:@"title"];
+    [aCoder encodeObject:_content forKey:@"content"];
+}
+
 - (id)initWithTitle:(NSString *)title content:(NSString *)content{
     self = [super init];
     if (self) {
